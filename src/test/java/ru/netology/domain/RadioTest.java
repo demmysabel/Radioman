@@ -71,6 +71,58 @@ public class RadioTest {
     }
 
     @Test
+    void shouldIncreaseStation() {
+        Radio service = new Radio();
+
+        service.setCurrentStation(4);
+        service.increaseStation();
+
+        int expected = 5;
+        int actual = service.getCurrentStation();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void shouldNotIncreaseStation() {
+        Radio service = new Radio();
+
+        service.setCurrentStation(9);
+        service.increaseStation();
+
+        int expected = 0;
+        int actual = service.getCurrentStation();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void shouldDecreaseStation() {
+        Radio service = new Radio();
+
+        service.setCurrentStation(4);
+        service.decreaseStation();
+
+        int expected = 3;
+        int actual = service.getCurrentStation();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void shouldNotDecreaseStation() {
+        Radio service = new Radio();
+
+        service.setCurrentStation(0);
+        service.decreaseStation();
+
+        int expected = 9;
+        int actual = service.getCurrentStation();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
     public void shouldRadioVolumeTurnOn10() {
         Radio radio = new Radio();
 
@@ -79,6 +131,7 @@ public class RadioTest {
 
         int expected = 10;
         int actual = radio.getCurrentVolume();
+
         assertEquals(expected, actual);
     }
 
@@ -91,6 +144,7 @@ public class RadioTest {
 
         int expected = 1;
         int actual = radio.getCurrentVolume();
+
         assertEquals(expected, actual);
     }
 
@@ -103,6 +157,7 @@ public class RadioTest {
 
         int expected = 0;
         int actual = radio.getCurrentVolume();
+
         assertEquals(expected, actual);
     }
 
@@ -115,6 +170,7 @@ public class RadioTest {
 
         int expected = 0;
         int actual = radio.getCurrentVolume();
+
         assertEquals(expected, actual);
     }
 
@@ -127,6 +183,7 @@ public class RadioTest {
 
         int expected = 0;
         int actual = radio.getCurrentVolume();
+
         assertEquals(expected, actual);
     }
 
@@ -138,8 +195,9 @@ public class RadioTest {
         service.increaseVolume();
 
         int expected = 5;
+        int actual = service.getCurrentVolume();
 
-        assertEquals(expected, service.getCurrentVolume());
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -150,8 +208,9 @@ public class RadioTest {
         service.increaseVolume();
 
         int expected = 10;
+        int actual = service.getCurrentVolume();
 
-        assertEquals(expected, service.getCurrentVolume());
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -162,8 +221,9 @@ public class RadioTest {
         service.decreaseVolume();
 
         int expected = 3;
+        int actual = service.getCurrentVolume();
 
-        assertEquals(expected, service.getCurrentVolume());
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -174,8 +234,9 @@ public class RadioTest {
         service.decreaseVolume();
 
         int expected = 0;
+        int actual = service.getCurrentVolume();
 
-        assertEquals(expected, service.getCurrentVolume());
+        assertEquals(expected, actual);
     }
 
 }
