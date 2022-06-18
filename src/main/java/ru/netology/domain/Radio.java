@@ -1,10 +1,30 @@
 package ru.netology.domain;
 
 public class Radio {
-    public int currentVolume;
+    private int currentVolume;
+    private int currentStation;
+    private int countStation = 10;
+
+    public Radio(int countStation) {
+
+        this.countStation = countStation;
+    }
+
+    public Radio() {
+    }
+
+    public void setCurrentVolume(int currentVolume) {
+        if (currentVolume < 0) {
+            currentVolume = 0;
+        }
+        if (currentVolume > 100) {
+            currentVolume = 100;
+        }
+        this.currentVolume = currentVolume;
+    }
 
     public void increaseVolume() {
-        if (currentVolume < 10) {
+        if (currentVolume < 100) {
             currentVolume = currentVolume + 1;
         }
     }
@@ -13,61 +33,39 @@ public class Radio {
         if (currentVolume > 0) {
             currentVolume = currentVolume - 1;
         }
-
-    }
-
-    public void setCurrentVolume(int currentVolume) {
-
-        if (currentVolume > 10) {
-            return;
-        }
-        if (currentVolume < 0) {
-            return;
-        }
-        this.currentVolume = currentVolume;
     }
 
     public int getCurrentVolume() {
         return currentVolume;
     }
 
-    public int currentStation;
+    public void setCurrentStation(int currentStation) {
+        if (currentStation < 0) {
+            currentStation = countStation - 1;
+        }
+        if (currentStation > countStation - 1) {
+            currentStation = 0;
+        }
+        this.currentStation = currentStation;
+    }
 
     public void increaseStation() {
-        if (currentStation == 9) {
+        if (currentStation < countStation - 1) {
+            currentStation = currentStation + 1;
+        } else {
             currentStation = 0;
-            return;
-        } else currentStation++;
+        }
     }
 
     public void decreaseStation() {
-        if (currentStation == 0) {
-            currentStation = 9;
-            return;
-        }
-        currentStation--;
-    }
-
-    public void setCurrentStation(int currentStation) {
-
-        if (currentStation >= 10) {
-            currentStation = 0;
-        }
-
-        if (currentStation <= -1) {
-            currentStation = 9;
-        }
-
         if (currentStation > 0) {
-            this.currentStation = currentStation;
+            currentStation = currentStation - 1;
+        } else {
+            currentStation = countStation - 1;
         }
-
-        this.currentStation = currentStation;
-
     }
 
     public int getCurrentStation() {
         return currentStation;
     }
-
 }
